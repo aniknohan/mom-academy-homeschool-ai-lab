@@ -24,8 +24,8 @@ keeps your progress.
 ## Web version (optional)
 
 The `web` folder is the same app as an installable web app. To publish it with GitHub Pages:
-**Settings → Pages → Build and deployment → Source: GitHub Actions**, then re-run the
-workflow under **Actions**. Open the Pages link in Chrome and choose **Install app**.
+**Settings → Pages → Build and deployment → Source: GitHub Actions**, then open the
+**Actions** tab, choose **Publish web version** and tap **Run workflow**. Open the Pages link in Chrome and choose **Install app**.
 
 ## How it is built
 
