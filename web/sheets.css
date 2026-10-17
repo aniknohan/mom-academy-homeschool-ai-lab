@@ -1,0 +1,225 @@
+/* Printable sheets: always black ink on white paper, independent of app theme. */
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-Medium.ttf") format("truetype"); font-weight: 500 600; font-display: swap; }
+.sheet { --ink: #1d2a3a; --soft: #8794a5; --tint: #f1f4f8;
+  width: 8.5in; height: 11in; padding: 0.5in; background: #fff; color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 11pt; line-height: 1.4;
+  display: flex; flex-direction: column; position: relative; overflow: hidden; box-sizing: border-box; color-scheme: light; }
+.sheet *, .sheet *::before, .sheet *::after { box-sizing: border-box; }
+.sheet h1, .sheet h2, .sheet b, .sheet .num, .sheet .tag { font-family: Poppins, system-ui, sans-serif; }
+.sheet header { border-bottom: 2pt solid var(--ink); padding-bottom: 6px; margin-bottom: 14px; }
+.sheet .tag { font-size: 8pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #5b6878; }
+.sheet h1 { font-size: 25pt; margin: 0; line-height: 1.1; font-weight: 700; }
+.sheet .sub { margin: 2px 0 0; color: #5b6878; font-size: 10pt; }
+.sheet .sbody { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.sheet .snote { font-size: 10.5pt; background: var(--tint); border-radius: 8px; padding: 9px 12px; margin: 10px 0 18px; }
+.sheet footer { position: absolute; bottom: 0.28in; left: 0; right: 0; text-align: center; font-size: 7.5pt; color: var(--soft); }
+.sheet .emo { font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", sans-serif; line-height: 1.05; display: inline-block; }
+.sheet .bx { display: inline-block; width: 16px; height: 16px; border: 1.6pt solid var(--ink); border-radius: 3px; vertical-align: -3px; margin: 0 5px 0 8px; }
+/* cut-out grids */
+.sheet .cutgrid { display: grid; border: 1.4pt dashed var(--soft); }
+.sheet .cutgrid.g4 { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1.75in; }
+.sheet .cutgrid.g5 { grid-template-columns: repeat(5, 1fr); }
+.sheet .cutgrid.g2 { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 2.3in; }
+.sheet .cutgrid.g2x4 { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1.85in; }
+.sheet .cut { border: 1.4pt dashed var(--soft); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 4px; text-align: center; gap: 4px; min-height: 1.5in; }
+.sheet .cut b { font-size: 11.5pt; font-weight: 600; }
+.sheet .cut.tall b { font-size: 16pt; }
+.sheet .cut.hunt span, .sheet .cut.mem span { font: 700 88pt/1 Poppins, sans-serif; }
+.sheet .cut.mem span { font-size: 64pt; }
+.sheet .sorthead { display: grid; gap: 10px; margin-bottom: 10px; }
+.sheet .sorthead.two { grid-template-columns: 1fr 1fr; }
+.sheet .sorthead.three { grid-template-columns: 1fr 1fr 1fr; }
+.sheet .sorthead > div { border: 3pt solid var(--ink); border-radius: 12px; padding: 0 10px; height: 1.6in; font: 700 15pt Poppins, sans-serif; display: flex; align-items: flex-start; justify-content: center; padding-top: 10px; gap: 8px; }
+/* sizes */
+.sheet .sizes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; align-items: end; }
+.sheet .sizes b { display: block; font-size: 16pt; }
+.sheet .sizes.mix { margin-top: 20px; border-top: 1.4pt dashed var(--soft); padding-top: 16px; }
+.sheet .szc { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; min-height: 2.6in; }
+/* color mats */
+.sheet .cmats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
+.sheet .cmat { border: 3pt solid var(--ink); border-radius: 14px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+.sheet .cmhead { font: 700 18pt Poppins, sans-serif; display: flex; align-items: center; gap: 10px; }
+.sheet .dot { width: 28px; height: 28px; border-radius: 50%; border: 1.5pt solid var(--ink); }
+.sheet .space { flex: 1; border: 1.4pt dashed var(--soft); border-radius: 10px; display: grid; place-items: center; color: var(--soft); font-size: 10pt; }
+/* pairs */
+.sheet .pairs { display: flex; flex-direction: column; gap: 14px; }
+.sheet .prow { display: grid; grid-template-columns: 1.7in 1fr 1.7in; align-items: center; }
+.sheet .pc { border: 2.5pt solid var(--ink); border-radius: 12px; text-align: center; padding: 6px; }
+.sheet .pc b { display: block; font-size: 12pt; }
+.sheet .pdots { display: flex; justify-content: space-between; padding: 0 6px; }
+.sheet .pdots i { width: 14px; height: 14px; border-radius: 50%; background: var(--ink); display: block; }
+/* letters */
+.sheet .lettercard { display: flex; justify-content: center; align-items: baseline; gap: 36px; border: 3pt solid var(--ink); border-radius: 20px; padding: 0 0 0.55in; height: 4.6in; overflow: hidden; }
+.sheet .lettercard span { font: 700 230pt/1.1 Poppins, sans-serif; }
+.sheet .kw { display: flex; align-items: center; gap: 18px; margin-top: 16px; font-size: 20pt; }
+.sheet .kw b { font-size: 22pt; }
+.sheet .kw span { font-size: 12pt; color: #3a4757; }
+.sheet .two-trace { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; flex: 1; }
+.sheet .pdl { flex: 1; display: grid; place-items: center; }
+.sheet .pdl svg { max-height: 7.4in; }
+.sheet .abook { border: 3pt solid var(--ink); border-radius: 16px; padding: 8px 16px; flex: 1; display: flex; flex-direction: column; }
+.sheet .ideas { display: flex; justify-content: center; gap: 22px; border-bottom: 1.4pt dashed var(--soft); padding-bottom: 8px; }
+.sheet .ideas span { display: flex; flex-direction: column; align-items: center; }
+.sheet .ideas small { font-size: 9pt; color: #5b6878; }
+.sheet .draw { flex: 1; display: grid; place-items: end center; color: var(--soft); font-size: 10pt; padding-bottom: 6px; }
+/* numbers */
+.sheet .ncard { gap: 8px; }
+.sheet .ncard .num { font: 700 84pt/1 Poppins, sans-serif; }
+.sheet .dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 150px; }
+.sheet .dots i { width: 22px; height: 22px; border-radius: 50%; background: var(--ink); display: block; }
+.sheet .dots.sm i { width: 16px; height: 16px; }
+.sheet .tenf { display: grid; grid-template-columns: repeat(5, 18px); gap: 4px; }
+.sheet .tenf i { width: 18px; height: 18px; border-radius: 50%; background: var(--ink); display: block; }
+.sheet .zero { font-size: 14pt; color: #5b6878; }
+.sheet .frames { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+.sheet .frame { display: grid; border: 4pt solid var(--ink); }
+.sheet .frame.f5 { grid-template-columns: repeat(5, 1fr); }
+.sheet .frame.f10 { grid-template-columns: repeat(5, 1fr); }
+.sheet .frame > div { height: 1.45in; border-right: 3pt solid var(--ink); border-bottom: 3pt solid var(--ink); }
+.sheet .frame > div:nth-child(5n) { border-right: 0; }
+.sheet .frame.f5 > div, .sheet .frame.f10 > div:nth-child(n+6) { border-bottom: 0; }
+.sheet .frame.f5 > div { height: 1.75in; }
+/* shapes */
+.sheet .bigshape { flex: 1; display: grid; place-items: center; }
+.sheet .smallshapes { display: flex; justify-content: space-around; }
+.sheet .shgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.sheet .shc { border: 2pt solid var(--ink); border-radius: 12px; text-align: center; padding: 8px 4px; }
+.sheet .shc b { display: block; font-size: 12pt; }
+/* count & color */
+.sheet .cc { display: flex; flex-direction: column; gap: 12px; }
+.sheet .ccrow { border: 2pt solid var(--ink); border-radius: 12px; display: grid; grid-template-columns: 1fr 2.5in; align-items: center; padding: 8px 12px; min-height: 1.25in; }
+.sheet .ccpics { display: flex; flex-wrap: wrap; gap: 2px; }
+.sheet .ccopts { display: flex; justify-content: space-around; }
+.sheet .ccopts span { font: 700 30pt Poppins, sans-serif; }
+/* retell, boxes, lines */
+.sheet .seq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.sheet .seq b { display: block; text-align: center; font-size: 16pt; }
+.sheet .dbox { border: 3pt solid var(--ink); border-radius: 12px; height: 3.3in; }
+.sheet .dbox.big { flex: 1; height: auto; min-height: 4in; }
+.sheet .dbox.frame2 { border-width: 6pt; border-style: double; }
+.sheet .lines { margin-top: 14px; }
+.sheet .ln { border-bottom: 1.2pt solid var(--soft); height: 34px; }
+.sheet .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+.sheet .two-col b { font-size: 14pt; }
+.sheet .actbox { border: 2pt solid var(--ink); border-radius: 12px; padding: 10px 12px; font-size: 11.5pt; }
+/* compare */
+.sheet .cmp { display: flex; flex-direction: column; gap: 10px; }
+.sheet .cmprow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.sheet .cmpc { border: 2pt solid var(--ink); border-radius: 12px; display: grid; place-items: center; height: 1.35in; }
+.sheet .bars { display: flex; flex-direction: column; gap: 22px; }
+.sheet .barpair { display: flex; flex-direction: column; gap: 8px; border: 1.4pt dashed var(--soft); border-radius: 10px; padding: 10px; }
+.sheet .bar { display: flex; }
+.sheet .bar i { width: 0.68in; height: 0.5in; border: 2.5pt solid var(--ink); margin-right: -2.5pt; display: block; border-radius: 4px; }
+.sheet .cups { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; margin-bottom: 14px; }
+.sheet .cups b { display: block; font-size: 15pt; }
+.sheet .posbox { flex: 1; border: 2pt solid var(--ink); border-radius: 12px; position: relative; min-height: 4.5in; }
+.sheet .ptable { position: absolute; left: 30%; right: 30%; top: 45%; height: 12px; background: var(--ink); }
+.sheet .ptable::before, .sheet .ptable::after { content: ""; position: absolute; top: 12px; width: 12px; height: 1.3in; background: var(--ink); }
+.sheet .ptable::before { left: 10px; } .sheet .ptable::after { right: 10px; }
+.sheet .plist { font-size: 15pt; line-height: 1.7; margin: 10px 0 0; }
+.sheet .rubs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
+.sheet .rub { display: flex; flex-direction: column; }
+.sheet .rub b { font-size: 16pt; }
+.sheet .rub .dbox { flex: 1; height: auto; }
+.sheet .odd { display: flex; flex-direction: column; gap: 10px; }
+.sheet .oddrow { display: grid; grid-template-columns: repeat(4, 1fr); border: 2pt solid var(--ink); border-radius: 12px; padding: 8px; text-align: center; }
+.sheet .lead { font-size: 13pt; margin: 0 0 8px; }
+.sheet .ruler { display: grid; grid-template-columns: repeat(10, 1fr); border: 1.4pt dashed var(--soft); margin-bottom: 8px; }
+.sheet .ruler div { border-right: 2pt solid var(--ink); text-align: center; padding: 4px 0; border-top: 2pt solid var(--ink); border-bottom: 2pt solid var(--ink); }
+.sheet .ruler small { display: block; font-size: 8pt; }
+.sheet table.grid { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.sheet table.grid th, .sheet table.grid td { border: 2pt solid var(--ink); padding: 8px 10px; font-size: 12.5pt; height: 0.62in; }
+.sheet table.grid th { font-family: Poppins, sans-serif; text-align: left; height: auto; }
+.sheet table.fs td.it { display: flex; align-items: center; gap: 10px; border: 0; }
+.sheet table.fs td.it b { font-size: 13pt; }
+.sheet table.fs tr td:first-child { border: 2pt solid var(--ink); }
+.sheet .song { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.sheet .song p { font: 600 19pt/1.5 Poppins, sans-serif; margin: 0; }
+/* fine motor */
+.sheet .strips { display: flex; flex-direction: column; gap: 0; border-top: 1.4pt dashed var(--soft); }
+.sheet .strip { height: 1.25in; border-bottom: 1.4pt dashed var(--soft); display: flex; justify-content: space-around; align-items: stretch; }
+.sheet .strip i { width: 0; border-left: 3pt dashed var(--ink); margin: 0.2in 0; }
+.sheet .cutlines { display: flex; flex-direction: column; justify-content: space-around; flex: 1; }
+.sheet .cutlines div { display: flex; align-items: center; gap: 8px; }
+.sheet .cutlines span { font-size: 22pt; }
+.sheet .cutlines i { flex: 1; height: 0; border-top: 5pt solid var(--ink); }
+.sheet .namebig { font: 700 80pt/1.1 Poppins, sans-serif; text-align: center; letter-spacing: .05em; }
+.sheet .namebig.sm { font-size: 54pt; }
+.sheet .nameboxes { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+.sheet .nameboxes div { width: 1in; height: 1.2in; border: 2.5pt solid var(--ink); border-radius: 10px; }
+.sheet .nametrace { display: flex; flex-direction: column; gap: 20px; }
+.sheet .namecopy { display: flex; flex-direction: column; gap: 6px; }
+.sheet .wline { height: 1.15in; border-bottom: 2pt solid var(--ink); position: relative; }
+.sheet .wline::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1.2pt dashed var(--soft); }
+.sheet .hint { font-size: 14pt; margin-top: 10px; }
+.sheet .copygrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.sheet .cpm, .sheet .cpb { border: 2pt solid var(--ink); border-radius: 12px; height: 2.2in; display: grid; place-items: center; }
+.sheet .cpb { border-style: dashed; }
+.sheet .lrows { display: flex; flex-direction: column; gap: 20px; }
+.sheet .lrow { display: grid; grid-template-columns: 1.3in repeat(3, 1fr) 1.3in; align-items: center; gap: 6px; border-bottom: 2pt solid var(--ink); padding-bottom: 6px; }
+.sheet .lm { font: 700 90pt/1 Poppins, sans-serif; text-align: center; }
+.sheet .lb { height: 1.6in; border: 2pt dashed var(--soft); border-radius: 10px; }
+.sheet .pom { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; justify-items: center; align-content: center; flex: 1; }
+.sheet .pom div { width: 1.6in; height: 1.6in; border-radius: 50%; border: 3pt solid var(--ink); }
+.sheet .chk { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 14pt; }
+/* circle kit */
+.sheet .board { border: 2.5pt solid var(--ink); border-radius: 16px; padding: 18px 22px; display: flex; flex-direction: column; gap: 18px; }
+.sheet .brow { display: flex; align-items: flex-end; gap: 14px; font: 600 18pt Poppins, sans-serif; }
+.sheet .brow i { flex: 1; border-bottom: 2pt solid var(--ink); height: 34px; }
+.sheet h2.mid { font-size: 18pt; margin: 22px 0 10px; }
+.sheet .weather { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.sheet .weather div { border: 2pt solid var(--ink); border-radius: 12px; text-align: center; padding: 8px; }
+.sheet .weather b { display: block; font-size: 13pt; }
+.sheet .dow, .sheet .months { display: flex; flex-direction: column; gap: 10px; }
+.sheet .dow div { border: 2pt solid var(--ink); border-radius: 12px; padding: 12px 18px; font: 700 26pt Poppins, sans-serif; }
+.sheet .months { display: grid; grid-template-columns: 1fr 1fr; }
+.sheet .months div { border: 2pt solid var(--ink); border-radius: 12px; padding: 14px 16px; font: 700 18pt Poppins, sans-serif; }
+.sheet .az { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.sheet .azc { border: 2pt solid var(--ink); border-radius: 10px; text-align: center; padding: 4px 2px; }
+.sheet .azc b { display: block; font-size: 17pt; line-height: 1.1; }
+.sheet .azc small { display: block; font-size: 8pt; }
+.sheet .nline { display: grid; grid-template-columns: repeat(7, 1fr); border: 2pt solid var(--ink); }
+.sheet .nline div { border: 1.5pt solid var(--ink); text-align: center; padding: 12px 0; }
+.sheet .nline b { font-size: 24pt; }
+.sheet .nline2 { display: grid; grid-template-columns: repeat(11, 1fr); margin-top: 20px; border: 2pt solid var(--ink); }
+.sheet .nline2 div { border-right: 1.5pt solid var(--ink); text-align: center; padding: 6px 0; }
+.sheet .nline2 b { font-size: 18pt; display: block; }
+.sheet .nline2 span { font-size: 9pt; letter-spacing: -1px; word-break: break-all; }
+
+/* guide */
+.sheet .guide { font-size: 11.2pt; line-height: 1.38; display: flex; flex-direction: column; gap: 7px; }
+.sheet .guide .goals { background: var(--tint); border-radius: 10px; padding: 8px 12px; }
+.sheet .guide ul { margin: 3px 0 0; padding-left: 18px; }
+.sheet .guide li { margin-bottom: 2px; }
+.sheet .guide .gsec { border-left: 4pt solid var(--ink); padding: 2px 0 2px 10px; }
+.sheet .guide h3 { font: 700 12.5pt Poppins, sans-serif; margin: 0 0 3px; }
+.sheet .guide p { margin: 0 0 3px; }
+.sheet .guide .gsm { font-size: 10.5pt; color: #4b5867; }
+.sheet .guide .praise { border: 1.5pt dashed var(--soft); border-radius: 10px; padding: 7px 12px; }
+.sheet .wows { display: flex; flex-direction: column; gap: 12px; }
+.sheet .wow { display: grid; grid-template-columns: 1.2in 1fr; gap: 12px; align-items: center; border: 2pt solid var(--ink); border-radius: 12px; padding: 10px 14px; }
+.sheet .wow b { font-size: 20pt; }
+.sheet .wow p { margin: 2px 0 8px; font-size: 13pt; }
+.sheet .wow .wl { font-size: 10pt; color: #5b6878; display: flex; gap: 6px; align-items: flex-end; }
+.sheet .wow .wl span { flex: 1; border-bottom: 1.2pt solid var(--soft); height: 22px; }
+.sheet .pats { display: flex; flex-direction: column; gap: 14px; }
+.sheet .patrow { display: grid; grid-template-columns: 0.6in repeat(8, 1fr); align-items: center; border: 2pt solid var(--ink); border-radius: 12px; padding: 8px; gap: 2px; text-align: center; min-height: 1.3in; }
+.sheet .patrow .pk { font: 700 10pt Poppins, sans-serif; color: #5b6878; }
+.sheet .patrow .blank { border: 2pt dashed var(--soft); border-radius: 8px; height: 0.8in; }
+.sheet .findgrid { display: grid; grid-template-columns: repeat(6, 1fr); border: 2pt solid var(--ink); border-radius: 12px; overflow: hidden; }
+.sheet .findgrid span { font: 700 34pt/1.5 Poppins, sans-serif; text-align: center; border: 1pt solid #c9d1dc; }
+.sheet .findcount { margin-top: 14px; font: 600 16pt Poppins, sans-serif; display: flex; align-items: flex-end; gap: 8px; }
+.sheet .findcount .blank { display: inline-block; width: 1in; border-bottom: 2pt solid var(--ink); height: 30px; }
+.sheet .findcount small { font: 400 8pt system-ui, sans-serif; color: var(--soft); margin-left: auto; }
+.sheet .scatter { border: 2pt solid var(--ink); border-radius: 12px; padding: 12px; display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: center; }
+.sheet .graph { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 14px; justify-items: center; }
+.sheet .gcol { display: flex; flex-direction: column-reverse; align-items: center; }
+.sheet .gcol i { width: 0.95in; height: 0.52in; border: 2pt solid var(--ink); margin-top: -2pt; display: block; }
+.sheet .gcol b { margin-top: 6px; }
+.sheet .maze { display: grid; grid-template-columns: repeat(6, 1fr); border: 3pt solid var(--ink); margin: 0 auto; width: 6.6in; }
+.sheet .maze div { height: 1.08in; border: 1.2pt solid #9aa6b6; display: flex; flex-direction: column; align-items: center; justify-content: center; font: 700 34pt/1 Poppins, sans-serif; }
+.sheet .maze div small { font-size: 14pt; }
+.sheet .maze .st, .sheet .maze .en { background: #f1f4f8; }
+.sheet table.wk td { height: 0.5in; font-size: 11pt; }
+.sheet table.wk th { font-size: 10pt; }

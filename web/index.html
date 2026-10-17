@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mom Academy</title>
+<meta name="description" content="A gentle 190-day home preschool plan with daily lessons and printable study materials.">
+<meta name="theme-color" content="#2557a7">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="sheets.css">
+</head>
+<body>
+<div id="appshell">
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>Mom <span>Academy</span></h1>
+      <div class="prog"><span id="progtxt">0 of 190 days</span><div class="bar"><i id="progbar"></i></div></div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="today" aria-selected="true">Lesson</button>
+      <button role="tab" data-tab="print" aria-selected="false">Printables</button>
+      <button role="tab" data-tab="year" aria-selected="false">Year</button>
+      <button role="tab" data-tab="kit" aria-selected="false">Circle kit</button>
+      <button role="tab" data-tab="ready" aria-selected="false">Checklist</button>
+      <button role="tab" data-tab="setup" aria-selected="false">Setup</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+<main>
+  <div class="controls" id="daycontrols">
+    <button class="btn" id="prev" aria-label="Previous day">&larr;</button>
+    <select id="weeksel" aria-label="Choose week"></select>
+    <button class="btn" id="next" aria-label="Next day">&rarr;</button>
+    <button class="btn primary" id="gotoNext">Next lesson</button>
+  </div>
+  <div class="weekstrip" id="weekstrip"></div>
+
+  <section id="tab-today" class="panel"><div id="day"></div></section>
+
+  <section id="tab-print" class="panel" hidden>
+    <div class="printbar">
+      <div><h2 id="printtitle">Printables</h2><p class="small" id="printsub"></p></div>
+      <div class="pbtns"><button class="btn primary" id="printday">Print today's pages</button><button class="btn" id="printweek">Print the whole week</button></div>
+    </div>
+    <p class="small tip">Tip: in the print screen, choose <b>Letter</b> paper (or A4 with "Fit to page"). To keep a copy, choose <b>Save as PDF</b>.</p>
+    <div id="sheets" class="sheets"></div>
+  </section>
+
+  <section id="tab-year" class="panel" hidden>
+    <h2>The whole year</h2>
+    <p class="small">38 weeks, 19 two-week themes. Tap a week to open it.</p>
+    <div class="tablewrap"><table id="yeartable"><thead><tr><th>Week</th><th>Days</th><th>Letter</th><th>Math</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section id="tab-kit" class="panel" hidden>
+    <div class="printbar"><div><h2>Circle time kit</h2><p class="small">Print once and use every morning: weather board, days, months, alphabet chart and number line.</p></div>
+    <div class="pbtns"><button class="btn primary" id="printkit">Print the kit</button></div></div>
+    <div id="kitsheets" class="sheets"></div>
+  </section>
+
+  <section id="tab-ready" class="panel" hidden>
+    <h2>Ready for Year 2?</h2>
+    <p class="small">Things many children can do by the end of a first preschool year. These are goals, not tests. Tick them as they happen.</p>
+    <div class="grid2" id="readygrid"></div>
+  </section>
+
+  <section id="tab-setup" class="panel" hidden>
+    <h2>Setup</h2>
+    <div class="card" id="installcard" hidden>
+      <p><b>Install this app</b> to get an icon on your home screen and use it offline.</p>
+      <button class="btn primary" id="installbtn">Install app</button>
+    </div>
+    <div class="card">
+      <div class="field"><label for="childname"><b>Child's first name</b></label><input id="childname" type="text" autocomplete="off" placeholder="e.g. Ayaan"></div>
+      <p class="small">Used on the name tracing and name writing pages.</p>
+      <div class="field"><label for="startdate"><b>First day of school</b></label><input type="date" id="startdate"><button class="btn" id="cleardate">Clear</button></div>
+      <p class="small">Shows a date on each lesson (Monday to Friday). Holidays aren't skipped, so just pick up where you left off.</p>
+    </div>
+    <div class="card">
+      <p><b>Back up your progress</b></p>
+      <p class="small">Progress is saved on this device. Make a backup file now and then, or to move to another phone or computer.</p>
+      <div class="field"><button class="btn" id="exportbtn">Save backup file</button><label class="btn" for="importfile">Restore from backup</label><input type="file" id="importfile" accept="application/json,.json" hidden></div>
+      <p class="small" id="backupmsg" role="status"></p>
+    </div>
+    <div class="sched" id="sched"></div>
+    <h3>How this plan works</h3>
+    <div class="card">
+      <p>Each school day has 7 short parts and takes about <b>45 to 60 minutes</b>. You don't have to do it all at once. The <b>Printables</b> tab has the pages for each day: cards, mats, tracing pages and charts. Most use only paper, crayons, scissors and glue.</p>
+      <p><b>This year</b> follows the same 19 themes and letters as Playing Preschool Year 1. <b>Next year</b> is Playing Preschool Year 2 (still preschool). Kindergarten comes the year after.</p>
+      <p><b>No books to buy.</b> Every reading step has a free option: your library, the Khan Academy Kids Library, Unite for Literacy or Storyline Online.</p>
+      <ul>
+        <li><b>No rush, no pressure.</b> Nothing needs to be mastered this year.</li>
+        <li><b>Letter names first.</b> Say the sound, but knowing each letter's shape and name is the main goal.</li>
+        <li><b>Alphabet book.</b> Keep every Friday letter page in a folder.</li>
+        <li><b>Apps last.</b> Hands-on lesson first, then 10 to 15 minutes of Khan Academy Kids or ABCmouse.</li>
+      </ul>
+    </div>
+    <h3>Supplies for the year</h3>
+    <div class="card"><p>Paper, crayons, pencils, child scissors, glue stick, tape, a few clear sheet protectors, playdough, something to count (beans, pasta, buttons), a die, a deck of cards, a folder for the alphabet book, and a free library card. Each theme's extra supplies are listed on its first Monday.</p></div>
+    <div class="card"><p class="small">Reset clears all ticks and progress on this device.</p><button class="btn danger" id="resetbtn">Reset progress…</button><span id="resetconfirm" hidden> <b>Are you sure?</b> <button class="btn danger" id="resetyes">Yes, reset</button> <button class="btn" id="resetno">Cancel</button></span></div>
+    <p class="small">Mom Academy · works offline once installed.</p>
+  </section>
+</main>
+</div>
+</div>
+<div id="printroot"></div>
+<script src="data.js"></script>
+<script src="materials.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+}
+
+def runNumber = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInteger()
+
+android {
+    namespace 'org.momacademy.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'org.momacademy.app'
+        minSdk 24
+        targetSdk 34
+        versionCode runNumber
+        versionName "1.0.${runNumber}"
+    }
+
+    signingConfigs {
+        release {
+            // A fixed key kept in the repo so every new build installs over the old one
+            // and keeps the progress saved on the phone.
+            storeFile file('../keystore/release.jks')
+            storePassword 'preschool'
+            keyAlias 'preschool'
+            keyPassword 'preschool'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main {
+            // The app is the same web app that lives in /web
+            assets.srcDirs = ['../../web']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.11.0'
+    implementation 'androidx.core:core:1.13.1'
+}
