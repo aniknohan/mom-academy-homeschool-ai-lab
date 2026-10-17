@@ -1,0 +1,7 @@
+# Show the project's real languages on GitHub
+web/data.js linguist-generated=true
+web/app.js linguist-generated=false linguist-detectable=true
+web/materials.js linguist-generated=false linguist-detectable=true
+web/fonts/** linguist-vendored
+*.jks binary
+*.syso binary

@@ -1,0 +1,29 @@
+MOM ACADEMY - Windows app
+=========================
+
+INSTALL (one time)
+1. Right-click the downloaded .zip file and choose "Extract All...".
+2. Move the "Mom Academy" folder somewhere it will stay, for example Documents.
+3. Double-click "Mom Academy.exe".
+   - Windows may show "Windows protected your PC" because the app is new and
+     not from the Microsoft Store. Click "More info", then "Run anyway".
+     You only need to do this the first time.
+4. The app opens in its own window.
+
+PUT IT ON YOUR START MENU OR TASKBAR
+- Right-click "Mom Academy.exe" and choose "Pin to Start" or "Pin to taskbar"
+  (on Windows 11 choose "Show more options" first).
+
+PRINTING
+- Open the Printables tab, then "Print today's pages" or "Print the whole week".
+  Choose Letter paper. To keep a copy, choose "Save as PDF".
+
+HOW IT WORKS
+- No internet needed. Everything is inside the .exe.
+- It opens in Microsoft Edge (or Google Chrome) as an app window. Nothing is sent online.
+- Progress is saved to %APPDATA%\MomAcademy\progress.json (with a .bak backup copy).
+  Progress from the earlier "Our Preschool Year" app is brought over automatically.
+- Close the window when you're done. The app stops by itself a few minutes later.
+
+UNINSTALL
+- Delete the "Mom Academy" folder. To also delete progress, delete %APPDATA%\MomAcademy.

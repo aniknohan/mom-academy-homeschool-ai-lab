@@ -1,4 +1,4 @@
-name: Build Android app
+name: Build apps
 
 on:
   push:
@@ -33,15 +33,50 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MomAcademy-apk
+          name: android
           path: MomAcademy.apk
+
+  windows:
+    name: Build Windows app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Build the app
+        run: |
+          cp -r web windows/web
+          cd windows
+          GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -ldflags="-H windowsgui -s -w" -o "Mom Academy.exe" .
+          mkdir -p "../dist/Mom Academy"
+          cp "Mom Academy.exe" "How to install.txt" "../dist/Mom Academy/"
+          cd ../dist && zip -qr ../MomAcademy-Windows.zip "Mom Academy"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: MomAcademy-Windows.zip
+
+  release:
+    name: Publish release
+    needs: [apk, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: out
+          merge-multiple: true
 
       - name: Publish to Releases
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           TAG="v1.0.${GITHUB_RUN_NUMBER}"
-          gh release create "$TAG" MomAcademy.apk \
+          gh release create "$TAG" out/MomAcademy.apk out/MomAcademy-Windows.zip \
             --title "Mom Academy ${TAG}" \
-            --notes "Download **MomAcademy.apk** below, open it on your Android phone and tap Install. Installing a newer version keeps your progress." \
+            --notes "**Android:** download **MomAcademy.apk**, open it and tap Install. **Windows:** download **MomAcademy-Windows.zip**, extract it and run **Mom Academy.exe**. Installing a newer version keeps your progress." \
             --latest

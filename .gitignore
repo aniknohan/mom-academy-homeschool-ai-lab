@@ -4,3 +4,5 @@ android/app/build/
 android/local.properties
 *.iml
 .idea/
+windows/web/
+windows/*.exe
