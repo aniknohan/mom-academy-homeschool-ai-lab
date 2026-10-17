@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark version: when the phone is in dark mode, the app (and its web page) turn dark too. -->
+    <style name="AppTheme" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#11161e</item>
+        <item name="android:navigationBarColor">#11161e</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+</resources>

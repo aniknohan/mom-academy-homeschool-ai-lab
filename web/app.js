@@ -192,6 +192,17 @@
   $("printday").onclick = () => doPrint(Materials.forDay(state.cur));
   $("printweek").onclick = () => { const w = DATA.days[state.cur - 1].wk; let p = []; for (let i = 0; i < 5; i++) p = p.concat(Materials.forDay((w - 1) * 5 + 1 + i)); doPrint(p); };
   $("printkit").onclick = () => doPrint(Materials.kit());
+  // appearance: automatic / light / dark
+  function applyTheme() {
+    const t = state.theme === "light" || state.theme === "dark" ? state.theme : "auto";
+    if (t === "auto") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = t;
+    document.querySelectorAll("#themeseg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.themeChoice === t ? "true" : "false"));
+    const dark = t === "dark" || (t === "auto" && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+    const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.content = dark ? "#11161e" : "#2557a7";
+  }
+  document.querySelectorAll("#themeseg button").forEach(b => b.addEventListener("click", () => { state.theme = b.dataset.themeChoice; store.set(state); applyTheme(); }));
+  if (window.matchMedia) { const mq = matchMedia("(prefers-color-scheme: dark)"); (mq.addEventListener ? mq.addEventListener("change", applyTheme) : mq.addListener(applyTheme)); }
+  applyTheme();
   const nm = $("childname"); nm.value = state.childName || "";
   nm.addEventListener("input", () => { state.childName = nm.value.slice(0, 20); save(); });
   const sd = $("startdate"); sd.value = state.start || "";

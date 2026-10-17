@@ -9,6 +9,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
+<script>try{var t=(JSON.parse(localStorage.getItem("pps-state")||"{}").theme);if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="sheets.css">
 </head>
@@ -75,6 +76,15 @@
     <div class="card" id="installcard" hidden>
       <p><b>Install this app</b> to get an icon on your home screen and use it offline.</p>
       <button class="btn primary" id="installbtn">Install app</button>
+    </div>
+    <div class="card">
+      <p><b>Appearance</b></p>
+      <div class="seg" role="group" aria-label="Appearance" id="themeseg">
+        <button type="button" data-theme-choice="auto">Automatic</button>
+        <button type="button" data-theme-choice="light">Light</button>
+        <button type="button" data-theme-choice="dark">Dark</button>
+      </div>
+      <p class="small" style="margin-top:8px">Automatic follows your phone's or computer's dark mode. Printed pages are always black on white paper.</p>
     </div>
     <div class="card">
       <div class="field"><label for="childname"><b>Child's first name</b></label><input id="childname" type="text" autocomplete="off" placeholder="e.g. Ayaan"></div>

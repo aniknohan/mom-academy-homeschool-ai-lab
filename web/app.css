@@ -7,11 +7,17 @@
   --body:system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root{
+/* Automatic: follow the phone. A choice in Setup (data-theme) overrides it. */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#11161e; --paper:#19202b; --ink:#e6ebf2; --muted:#9aa6b6; --line:#2b3442; --soft:#212a37;
   --accent:#7aa7f0; --accent-ink:#0c1420; --danger:#f27b6f;
   --c-circle:#f08a5d; --c-phon:#f06b9a; --c-math:#6aa8f5; --c-theme:#5fc184; --c-read:#a68cf0; --c-write:#e2b25a; --c-app:#4fc4c4;
   --done:#5fc184; --done-bg:#1d3326; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161e; --paper:#19202b; --ink:#e6ebf2; --muted:#9aa6b6; --line:#2b3442; --soft:#212a37;
+  --accent:#7aa7f0; --accent-ink:#0c1420; --danger:#f27b6f;
+  --c-circle:#f08a5d; --c-phon:#f06b9a; --c-math:#6aa8f5; --c-theme:#5fc184; --c-read:#a68cf0; --c-write:#e2b25a; --c-app:#4fc4c4;
+  --done:#5fc184; --done-bg:#1d3326; color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-tap-highlight-color:transparent}
@@ -124,3 +130,9 @@ a{color:var(--accent)}
 .sheet-guide .gsm{color:var(--muted);font-size:.88rem}
 .sheet-guide .praise{border:1px dashed var(--line);border-radius:10px;padding:8px 12px;margin-top:8px}
 .sheet-guide .emo{font-family:"Noto Color Emoji","Apple Color Emoji","Segoe UI Emoji",sans-serif}
+
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.seg button{font:600 .92rem var(--body);border:0;background:transparent;color:var(--ink);padding:9px 14px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.sheetframe{box-shadow:0 1px 4px rgba(0,0,0,.35)}
